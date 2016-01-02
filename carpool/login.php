@@ -8,7 +8,7 @@ if(isUserLoggedIn() == true) {
 
 // Execute php script if [Login] button is pressed
 if(isset($_POST['login'])) {
-    //Ensure parameter are properly entered
+    //Check that parameters exist
     if(!isset($_POST['username']) || !isset($_POST['password'])) {
         redirectToLoginPage();
     }

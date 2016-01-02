@@ -79,22 +79,22 @@ include 'includes/navbar.php';
                                             //Associative array to be passed to javascript, so that it can determine the max value of the following dropdown bar
                                             $maxVehicleCapacity = array();
 
-                                            $query = "SELECT PLATENO, MODEL, NUMOFSEATS FROM VEHICLE WHERE PROFILEID =".$userID;
+                                            $query = "SELECT PLATENO, MODEL, NUMOFSEATS FROM VEHICLE WHERE PROFILEID = :userid";
+                                            // Prepare statement
+                                            $query = oci_parse($connect, $stmt);
+                                            // Bind variables to placeholders (OCI_B_INT sepcifies that only integers allowed)
+                                            oci_bind_by_name($query, ":userid", $userID, -1, OCI_B_INT);
 
-                                            $result = oci_parse($connect, $query);
-
-                                            $check = oci_execute($result, OCI_DEFAULT);
-                                            if($check == true) {
-                                                while($row = oci_fetch_array($result)) {
+                                            $result = oci_execute($query, OCI_NO_AUTO_COMMIT);
+                                            if($result === true) {
+                                                while($row = oci_fetch_array($query)) {
                                                     echo '<option value="'.$row['PLATENO'].'">'.$row['MODEL'].' ('.$row['PLATENO'].')</option>';
-
-                                                //Building associative array
+                                                    //Building associative array
                                                     $maxVehicleCapacity[$row['PLATENO']] = $row['NUMOFSEATS'];
                                                 }
-
-                                                oci_free_statement($result);
                                             }
 
+                                            oci_free_statement($query);
                                             ?>
                                         </select>
                                     </div>

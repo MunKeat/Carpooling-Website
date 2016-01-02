@@ -49,16 +49,18 @@ include 'includes/navbar.php';
                     <th>Actions</th>
                 </tr>
                 <?php
-
                 $userID = getProfileID();
 
-                $query = "SELECT PLATENO, MODEL, NUMOFSEATS FROM VEHICLE WHERE PROFILEID=".$userID."";
+                // Get detail relating to the user's car
+                $stmt = "SELECT PLATENO, MODEL, NUMOFSEATS FROM VEHICLE WHERE PROFILEID = :userid";
+                // Prepare statement
+                $query = oci_parse($connect, $stmt);
+                // Bind variables to placeholders (OCI_B_INT sepcifies that only integers allowed)
+                oci_bind_by_name($query, ":userid", $userID, -1, OCI_B_INT);
 
-                $result = oci_parse($connect, $query);
-                $check = oci_execute($result, OCI_DEFAULT);
-
-                if($check == true) {
-                    while($row = oci_fetch_array($result)) {
+                $result = oci_execute($query, OCI_NO_AUTO_COMMIT);
+                if($result === true) {
+                    while($row = oci_fetch_array($query)) {
                         echo'<tr>
                                 <td class="plateno">'.$row['PLATENO'].'</td>
                                 <td class="model">'.$row['MODEL'].'</td>
@@ -68,17 +70,16 @@ include 'includes/navbar.php';
                             </tr>';
                     }
                 }
-
+                //Print an add button for users to add new vehicle(s)
                 echo'<tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td><a title="Add" class="ui-icon ui-icon-plus createVehicleButton"></a></td>
-                    <div id="profileid" style="display: none;">'.getProfileID().'<div>
                     <td></td>
                 </tr>';
 
-                oci_free_statement($result);
+                oci_free_statement($query);
 
                 ?>
             </table>
@@ -98,14 +99,17 @@ include 'includes/navbar.php';
                     <th>Departure Time</th>
                 </tr>
                 <?php
+                // Get user's pending passengers
+                $stmt = "SELECT PASSENGER, PASSENGER_CONTACT,PLATENO, MODEL, DEPARTURE, DESTINATION, TRIP_DATE, TRIP_TIME
+                        FROM PENDINGRIDE WHERE DRIVER_ID= :userid AND TRIP_DATE >=(SYSDATE)";
+                // Prepare statement
+                $query = oci_parse($connect, $stmt);
+                // Bind variables to placeholders
+                oci_bind_by_name($query, ":userid", $userID, -1, OCI_B_INT);
 
-                $query = "SELECT PASSENGER, PASSENGER_CONTACT,PLATENO, MODEL, DEPARTURE, DESTINATION, TRIP_DATE, TRIP_TIME FROM PENDINGRIDE WHERE DRIVER_ID=".$userID." AND TRIP_DATE >=(SYSDATE)";
-
-                $result = oci_parse($connect, $query);
-                $check = oci_execute($result, OCI_DEFAULT);
-
-                if($check == true) {
-                    while($row = oci_fetch_array($result)) {
+                $result = oci_execute($query, OCI_NO_AUTO_COMMIT);
+                if($result === true) {
+                    while($row = oci_fetch_array($query)) {
                         echo'<tr>
                                 <td>'.$row['PASSENGER'].'</td>
                                 <td>'.$row['PASSENGER_CONTACT'].'</td>
@@ -118,7 +122,7 @@ include 'includes/navbar.php';
                     }
                 }
 
-                oci_free_statement($result);
+                oci_free_statement($query);
                 ?>
             </table>
         </div>
@@ -138,16 +142,16 @@ include 'includes/navbar.php';
                 </tr>
 
                 <?php
+                $stmt = "SELECT DRIVER, DRIVER_CONTACT, PLATENO, MODEL, DEPARTURE, DESTINATION, TRIP_DATE, TRIP_TIME
+                            FROM PENDINGRIDE WHERE PASSENGER_ID= :userid AND TRIP_DATE >=(SYSDATE)";
+                // Prepare statement
+                $query = oci_parse($connect, $stmt);
+                // Bind variables to placeholders
+                oci_bind_by_name($query, ":userid", $userID, -1, OCI_B_INT);
 
-                $query = "SELECT DRIVER, DRIVER_CONTACT, PLATENO, MODEL, DEPARTURE, DESTINATION, TRIP_DATE, TRIP_TIME
-                            FROM PENDINGRIDE
-                            WHERE PASSENGER_ID=".$userID." AND TRIP_DATE >=(SYSDATE)";
-
-                $result = oci_parse($connect, $query);
-                $check = oci_execute($result, OCI_DEFAULT);
-
-                if($check == true) {
-                    while($row = oci_fetch_array($result)) {
+                $result = oci_execute($query, OCI_NO_AUTO_COMMIT);
+                if($result === true) {
+                    while($row = oci_fetch_array($query)) {
                         echo'<tr>
                                 <td>'.$row['DRIVER'].'</td>
                                 <td>'.$row['DRIVER_CONTACT'].'</td>
@@ -160,7 +164,7 @@ include 'includes/navbar.php';
                     }
                 }
 
-                oci_free_statement($result);
+                oci_free_statement($query);
                 ?>
             </table>
         </div>
