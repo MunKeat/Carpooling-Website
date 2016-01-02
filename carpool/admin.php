@@ -1,6 +1,6 @@
 <?php
-include 'libaries.php';
-include 'sqlconn.php'; // Connect to database
+include './php/libaries.php';
+include './php/sqlconn.php'; // Connect to database
 
 //Redirect users without administrative rights
 if(isUserLoggedIn() == false || isUserAdmin() == false) {

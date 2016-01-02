@@ -1,7 +1,7 @@
 <?php
 
-include 'libaries.php';
-include 'sqlconn.php';
+include './php/libaries.php';
+include './php/sqlconn.php'; // Connect to database
 
 //Visitors not logged in should not be allowed to post
 if(isUserLoggedIn() == false) {

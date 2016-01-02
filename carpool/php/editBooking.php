@@ -1,6 +1,6 @@
 <?php
   if(!isset($connect)) {
-    include '../sqlconn.php';
+    include './sqlconn.php';
   }
 
   if (isset($_POST["id"]) && isset($_POST["profileid"]) && isset($_POST["tripid"]) && isset($_POST["receiptno"])) {

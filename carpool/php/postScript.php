@@ -1,7 +1,7 @@
 <?php
 if(!isset($connect)) {
-  include '../libaries.php';
-  include '../sqlconn.php';
+  include './libaries.php';
+  include './sqlconn.php';
 }
 
 if (isset($_POST['startlocation']) && isset($_POST['endlocation']) && isset($_POST['tripdate']) && isset($_POST['price'])&& isset($_POST['plateno'])&& isset($_POST['numOfSeats'])) {

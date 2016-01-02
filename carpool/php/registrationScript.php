@@ -1,7 +1,7 @@
 <?php
 
 if(!isset($connect)) {
-  include '../sqlconn.php';
+  include './sqlconn.php';
 }
 
 if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['firstname'])

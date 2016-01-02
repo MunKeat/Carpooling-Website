@@ -1,6 +1,6 @@
 <?php
   if(!isset($connect)) {
-    include '../sqlconn.php';
+    include './sqlconn.php';
   }
 
   if (isset($_POST["startloc"]) && isset($_POST["endloc"]) && isset($_POST["ridingcost"]) && isset($_POST["seatsavail"]) && isset($_POST["tripdate"]) && isset($_POST["triptime"]) && isset($_POST["plateno"])) {

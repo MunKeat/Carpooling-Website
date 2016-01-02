@@ -1,13 +1,14 @@
 <?php
   if(!isset($connect)) {
-    include '../sqlconn.php';
+    include './sqlconn.php';
   }
 
-  if (isset($_POST["id"])) {
+  if (isset($_POST["profileid"]) && isset($_POST["tripid"])) {
     //json_decode for numerical type, otherwise refrain from json_decode for varchar/non-numerical type
-    $id = $_POST["id"];
+    $profileid = json_decode($_POST["profileid"]);
+    $tripid = json_decode($_POST["tripid"]);
 
-    $query = "DELETE FROM BOOKINGS WHERE RECEIPTNO = ".$id;
+    $query = "INSERT INTO BOOKINGS (ProfileID, TripID) VALUES (".$profileid.", ".$tripid.")";
 
     $result = oci_parse($connect, $query);
     $check = oci_execute($result, OCI_DEFAULT);
@@ -16,6 +17,7 @@
       oci_commit($connect);
     } else {
       //TODO
+      echo $query;
     }
   }
 

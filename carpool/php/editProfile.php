@@ -1,6 +1,6 @@
 <?php
   if(!isset($connect)) {
-    include '../sqlconn.php';
+    include './sqlconn.php';
   }
 
   if (isset($_POST["id"]) && isset($_POST["profileid"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["postalcode"]) && isset($_POST["contactnum"]) && isset($_POST["dob"]) && isset($_POST["creditcardnum"]) && isset($_POST["csc"]) && isset($_POST["cardholder"]) && isset($_POST["acct"])) {

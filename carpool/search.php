@@ -1,6 +1,6 @@
 <?php
-include 'libaries.php';
-include 'sqlconn.php';
+include './php/libaries.php';
+include './php/sqlconn.php'; // Connect to database
 ?>
 
 <!DOCTYPE html>

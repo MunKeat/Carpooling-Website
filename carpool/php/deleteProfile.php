@@ -1,13 +1,13 @@
 <?php
   if(!isset($connect)) {
-    include '../sqlconn.php';
+    include './sqlconn.php';
   }
 
   if (isset($_POST["id"])) {
     //json_decode for numerical type, otherwise refrain from json_decode for varchar/non-numerical type
-    $id = $_POST["id"];
+    $id = json_decode($_POST["id"]);
 
-    $query = "DELETE FROM VEHICLE WHERE PLATENO = ".$id;
+    $query = "DELETE FROM PROFILE WHERE PROFILEID = ".$id;
 
     $result = oci_parse($connect, $query);
     $check = oci_execute($result, OCI_DEFAULT);

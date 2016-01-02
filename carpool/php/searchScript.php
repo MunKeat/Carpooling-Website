@@ -1,8 +1,8 @@
 <?php
 
 if(!isset($connect)) {
-  include '../libaries.php';
-  include '../sqlconn.php';
+  include './libaries.php';
+  include './sqlconn.php';
 }
 
 if (isset($_POST['tripID'])) {

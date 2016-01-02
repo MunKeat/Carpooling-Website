@@ -6,7 +6,7 @@
  * Time: 2:19 PM
  */
 
-include 'libaries.php';
+include './php/libaries.php';
 logOut();
 redirectToLoginPage();
 ?>

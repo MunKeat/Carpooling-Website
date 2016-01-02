@@ -1,7 +1,7 @@
 <?php
 
-include 'libaries.php';
-include 'sqlconn.php'; // Connect to database
+include './php/libaries.php';
+include './php/sqlconn.php'; // Connect to database
 
 // If user is already logged in
 if(isUserLoggedIn() == true) {
