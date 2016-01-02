@@ -1,42 +1,39 @@
 <?php
-
 include './php/libaries.php';
-include './php/sqlconn.php'; // Connect to database
+include './php/sqlconn.php';
 
-// If user is already logged in
 if(isUserLoggedIn() == true) {
     redirectToHomePage();
 }
 
-// Attempt to log in
+// Execute php script if [Login] button is pressed
 if(isset($_POST['login'])) {
-    if(isset($_POST['username']) && isset($_POST['password'])) {
-        $userName = $_POST['username'];
-        $pw = $_POST['password'];
+    //Ensure parameter are properly entered
+    if(!isset($_POST['username']) || !isset($_POST['password'])) {
+        redirectToLoginPage();
+    }
 
-        // Find username and password
-        $query = "SELECT PROFILEID, FIRSTNAME, ACCBALANCE, CREDITCARDNUM, ADMIN FROM PROFILE WHERE Email='".$userName."' AND Password='".$pw."'";
+    // Find username and password
+    $stmt = "SELECT PROFILEID, FIRSTNAME, ACCBALANCE, CREDITCARDNUM, ADMIN FROM PROFILE WHERE Email = :username AND password = :password";
+    // Prepare statement
+    $query = oci_parse($connect, $stmt);
+    // Bind variables to placeholders
+    oci_bind_by_name($query, ":username", $_POST['username'], 255);
+    oci_bind_by_name($query, ":password", $_POST['password'], 255);
 
-        //  Store result of query
-        $result = oci_parse($connect, $query);
-
-        // Check if query fails
-        $check = oci_execute($result, OCI_DEFAULT);
-        if($check == false) {
-            redirectToLoginPage();
-            exit;
-        }
-
+    // Check if query fails
+    $result = oci_execute($query, OCI_NO_AUTO_COMMIT);
+    if($result === false) {
+        redirectToLoginPage();
+        exit;
+    } elseif ($row = oci_fetch_array($query)){
         // Initialize session variables
-        while($row = oci_fetch_array($result)) {
-            initSessionVar($row);
-            oci_free_statement($result);
-            redirectToHomePage();
-            exit;
-        }
+        initSessionVar($row);
+        oci_free_statement($query);
+        redirectToHomePage();
+        exit;
     }
 }
-
 ?>
 
 <!DOCTYPE html>
