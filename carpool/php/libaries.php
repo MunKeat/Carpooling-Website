@@ -1,16 +1,14 @@
 <?php
-/**
+/************************************************************
  * Created by PhpStorm.
  * User: Bobby
  * Date: 21/9/2015
  * Time: 9:09 AM
- */
-
+ ************************************************************/
 session_start();
 
 // Initialize Session variables
-function initSessionVar($row)
-{
+function initSessionVar($row) {
     $_SESSION["profileID"] = $row['PROFILEID'];
     $_SESSION["profileName"] = $row['FIRSTNAME'];
     $_SESSION["profileAccountBalance"] = $row['ACCBALANCE'];
@@ -45,12 +43,7 @@ function redirectToHomePage() {
 // Check methods
 // ==============================================
 function isUserLoggedIn() {
-    if((isset($_SESSION["profileID"]) && isset($_SESSION["profileName"])) == false) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    return (isset($_SESSION["profileID"]) && isset($_SESSION["profileName"]));
 }
 
 function isUserAdmin() {
@@ -61,21 +54,15 @@ function isUserAdmin() {
 // Setters and Getters methods
 // ==============================================
 function getProfileName() {
-    if(isset($_SESSION["profileName"]) == false) {
-        echo "User not logged in";
-    }
-    else {
-        echo $_SESSION["profileName"];
-    }
+    $profileName = isset($_SESSION["profileName"]) ? $_SESSION["profileName"] : "User not logged in";
+
+    echo $profileName;
 }
 
 function getProfileAccountBalance() {
-    if(isset($_SESSION["profileAccountBalance"]) == false) {
-        echo "Account is not logged in";
-    }
-    else {
-        echo "$ ".$_SESSION["profileAccountBalance"];
-    }
+    $accountBalance = isset($_SESSION["profileAccountBalance"]) ? "$ ".$_SESSION["profileAccountBalance"] : "Account is not logged in";
+
+    echo $accountBalance;
 }
 
 function getProfileID() {
@@ -86,5 +73,4 @@ function getProfileID() {
         return $_SESSION["profileID"];
     }
 }
-
 ?>

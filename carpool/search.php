@@ -32,7 +32,7 @@ include './php/sqlconn.php'; // Connect to database
                     <?php
                     $parameters_set = False;
                     //Check that parameters exist
-                    if(!isset($_POST['departureSearch'])|| !isset($_POST['destinationSearch']) || !isset($_POST['dateSearch'])) {
+                    if(!isset($_POST['departureSearch'], $_POST['destinationSearch'], $_POST['dateSearch'])) {
                         // Terminate php script
                     } else {
                         $parameters_set = True;

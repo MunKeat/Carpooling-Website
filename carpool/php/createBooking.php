@@ -1,27 +1,27 @@
 <?php
-  if(!isset($connect)) {
+if(!isset($connect)) {
     include './sqlconn.php';
-  }
+}
 
-  if (isset($_POST["profileid"]) && isset($_POST["tripid"])) {
-    //json_decode for numerical type, otherwise refrain from json_decode for varchar/non-numerical type
-    $profileid = json_decode($_POST["profileid"]);
-    $tripid = json_decode($_POST["tripid"]);
+if (isset($_POST["profileid"], $_POST["tripid"])) {
+    $stmt = "INSERT INTO BOOKINGS (ProfileID, TripID) VALUES (:profileid, :tripid)";
+    // Prepare statement
+    $query = oci_parse($connect, $stmt);
+    // Bind variables to placeholders
+    // json_decode for numerical type, otherwise refrain from json_decode for varchar/non-numerical type
+    oci_bind_by_name($query, ":profileid", json_decode($_POST["profileid"]));
+    oci_bind_by_name($query, ":tripid", json_decode($_POST["tripid"]));
 
-    $query = "INSERT INTO BOOKINGS (ProfileID, TripID) VALUES (".$profileid.", ".$tripid.")";
-
-    $result = oci_parse($connect, $query);
-    $check = oci_execute($result, OCI_DEFAULT);
-
-    if($check == true) {
-      oci_commit($connect);
+    // Check if query fails
+    $result = oci_execute($query, OCI_NO_AUTO_COMMIT);
+    if($result === true) {
+        oci_commit($connect);
     } else {
       //TODO
-      echo $query;
+        echo $query;
     }
-  }
 
-  oci_free_statement($result);
-
-  exit;
+    oci_free_statement($query);
+    exit;
+}
 ?>
