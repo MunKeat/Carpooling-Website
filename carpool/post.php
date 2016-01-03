@@ -37,18 +37,18 @@ include 'includes/navbar.php';
                         <b>Route</b>
                         <div class="row journeyPoint">
                             <div class="large-6 columns">
-                                <input type="text" id="startlocation" name="departureLocation" placeholder="Departure" />
+                                <input required type="text" id="startlocation" name="departureLocation" placeholder="Departure" />
                             </div>
                             <div class="large-3 columns">
-                                <input type="text" id="tripdate" name="departureDate" placeholder="Departure Date" class="datepicker"/>
+                                <input required type="text" id="tripdate" name="departureDate" placeholder="Departure Date" class="datepicker"/>
                             </div>
                             <div class="large-3 columns">
-                                <input type="text" id="triptime" name="depatureTime" placeholder="00:00"/>
+                                <input required type="text" id="triptime" name="depatureTime" placeholder="00:00"/>
                             </div>
                         </div>
                         <div class="row journeyPoint">
                             <div class="large-6 columns">
-                                <input type="text" id="endlocation" name="destinationLocation" placeholder="Destination" />
+                                <input required type="text" id="endlocation" name="destinationLocation" placeholder="Destination" />
                             </div>
                         </div>
                     </label>
@@ -62,7 +62,7 @@ include 'includes/navbar.php';
                                         <span class="prefix">SGD</span>
                                     </div>
                                     <div class="large-10 left columns">
-                                        <input type="text" id="ridingcost" name="passengerPayment" placeholder="Price Per Passenger" />
+                                        <input required type="text" id="ridingcost" name="passengerPayment" placeholder="Price Per Passenger" />
                                     </div>
                                 </div>
                             </label>
@@ -71,7 +71,7 @@ include 'includes/navbar.php';
                                 <div class="row collapse">
                                     <div class="large-12 left columns">
                                         <!--Query to Get Car-->
-                                        <select name="carType" class="text-center" id="carDropdown">
+                                        <select required name="carType" class="text-center" id="carDropdown">
                                             <option class="placeholder" selected="selected" value= "" disabled="disabled">Choose your car:</option>
                                             <?php
                                             $userID = getProfileID();

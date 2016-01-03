@@ -174,11 +174,11 @@ include 'includes/navbar.php';
 
 <form id="editVehicleForm" >
     <label for="idplateno">Plate Number:</label>
-    <input type="text" name="platenum" id="idplateno">
+    <input required type="text" name="platenum" id="idplateno">
     <label for="idmodel">Model:</label>
-    <input type="text" name="model" id="idmodel">
+    <input required type="text" name="model" id="idmodel">
     <label for="idnumseats">No. Of Seats:</label>
-    <input type="text" name="numseats" id="idnumseats">
+    <input required type="text" name="numseats" id="idnumseats">
 </form>
 
 <div id="deleteVehicleForm">

@@ -82,7 +82,7 @@ if(isset($_POST['makePayment'])) {
                         <?php getProfileAccountBalance() ?>
                     </p>
                     <label id="topUpAmount">
-                        <select name = "topUpAmount" class="text-center">
+                        <select required name = "topUpAmount" class="text-center">
                             <option class="placeholder" selected="selected" value= "" disabled="disabled">Select amount of credits to add</option>
                             <option value="5">+ SGD 5.00</option>
                             <option value="10">+ SGD 10.00</option>

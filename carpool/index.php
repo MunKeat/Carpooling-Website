@@ -30,13 +30,13 @@ include 'includes/navbar.php';
     <form id="searchBox" method="post" action="search.php">
         <div class="row">
             <div class="large-4 columns">
-                <input type="text" id ="departureSearch" name="departureSearch" placeholder="Departure"/>
+                <input required type="text" id ="departureSearch" name="departureSearch" placeholder="Departure"/>
             </div>
             <div class="large-4 columns">
-                <input type="text" id ="destinationSearch" name="destinationSearch" placeholder="Destination"/>
+                <input required type="text" id ="destinationSearch" name="destinationSearch" placeholder="Destination"/>
             </div>
             <div class="large-2 columns">
-                <input type="text" id ="dateSearch" name="dateSearch" placeholder="Date" class="datepicker"/>
+                <input required type="text" id ="dateSearch" name="dateSearch" placeholder="Date" class="datepicker"/>
             </div>
             <div class="large-2 columns">
                 <input type="submit" id="search" name="search" class="tiny button" value="SEARCH" />

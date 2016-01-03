@@ -130,13 +130,13 @@ include './php/sqlconn.php'; // Connect to database
             <br>
             <div class="row">
                 <div class="large-4 columns">
-                    <input type="text" name="departureSearch" placeholder="Departure" />
+                    <input required type="text" name="departureSearch" placeholder="Departure" />
                 </div>
                 <div class="large-4 columns">
-                    <input type="text" name="destinationSearch" placeholder="Destination" />
+                    <input required type="text" name="destinationSearch" placeholder="Destination" />
                 </div>
                 <div class="large-2 columns">
-                    <input type="text" name="dateSearch" placeholder="Date" class="datepicker"/>
+                    <input required type="text" name="dateSearch" placeholder="Date" class="datepicker"/>
                 </div>
                 <div class="large-2 columns">
                     <input type="submit" id="search" name="search" class="tiny button" value="SEARCH" />

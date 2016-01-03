@@ -88,29 +88,29 @@ include 'includes/navbarAdmin.php';
 
 <form id="editProfileForm" >
     <label for="idprofile">ID:</label>
-    <input type="text" name="profile" id="idprofile">
+    <input required type="text" name="profile" id="idprofile">
     <label for="idfrname">First Name:</label>
-    <input type="text" name="frname" id="idfrname">
+    <input required type="text" name="frname" id="idfrname">
     <label for="idlstname">Last Name:</label>
-    <input type="text" name="lstname" id="idlstname">
+    <input required type="text" name="lstname" id="idlstname">
     <label for="idemail">Email:</label>
-    <input type="text" name="email" id="idemail">
+    <input required type="text" name="email" id="idemail">
     <label for="idpasswd">Password:</label>
-    <input type="text" name="passwd" id="idpasswd">
+    <input required type="text" name="passwd" id="idpasswd">
     <label for="profileid">Postal Code:</label>
-    <input type="text" name="postal" id="idpostal">
+    <input required type="text" name="postal" id="idpostal">
     <label for="idcontact">Contact:</label>
-    <input type="text" name="contact" id="idcontact">
+    <input required type="text" name="contact" id="idcontact">
     <label for="iddob">DOB:</label>
-    <input type="text" name="dob" id="iddob" class="datepicker">
+    <input required type="text" name="dob" id="iddob" class="datepicker">
     <label for="idcardno">Credit Card No:</label>
-    <input type="text" name="cardno" id="idcardno">
+    <input trequired ype="text" name="cardno" id="idcardno">
     <label for="idcsc">Card Security No:</label>
-    <input type="text" name="csc" id="idcsc">
+    <input required type="text" name="csc" id="idcsc">
     <label for="idcardname">Credit Card Holder:</label>
-    <input type="text" name="csc" id="idcardname">
+    <input required type="text" name="csc" id="idcardname">
     <label for="idacct">Account Balance:</label>
-    <input type="text" name="acct" id="idacct">
+    <input required type="text" name="acct" id="idacct">
     <label for="idacct">Admin:</label>
     <input type="radio" name="admin" value="1"> Yes
     <input type="radio" name="admin" value="0"> No
@@ -158,13 +158,13 @@ include 'includes/navbarAdmin.php';
 
 <form id="editVehicleForm" >
     <label for="idplateno">Plate Number:</label>
-    <input type="text" name="platenum" id="idplateno">
+    <input required type="text" name="platenum" id="idplateno">
     <label for="profileid1">Profile ID (Ref):</label>
-    <input type="text" name="profileid" id="profileid1">
+    <input required type="text" name="profileid" id="profileid1">
     <label for="idmodel">Model:</label>
-    <input type="text" name="model" id="idmodel">
+    <input required type="text" name="model" id="idmodel">
     <label for="idnumseats">No. Of Seats:</label>
-    <input type="text" name="numseats" id="idnumseats">
+    <input required type="text" name="numseats" id="idnumseats">
 </form>
 
 <div id="deleteVehicleForm">
@@ -206,11 +206,11 @@ include 'includes/navbarAdmin.php';
 
 <form id="editBookingForm" >
     <label for="idprofileid2">Profile ID (Ref):</label>
-    <input type="text" name="profileid" id="idprofileid2">
+    <input required type="text" name="profileid" id="idprofileid2">
     <label for="idtripid1">Trip ID (Ref):</label>
-    <input type="text" name="model" id="idtripid1">
+    <input required type="text" name="model" id="idtripid1">
     <label for="idreceiptno">Receipt No:</label>
-    <input type="text" name="receiptno" id="idreceiptno">
+    <input required type="text" name="receiptno" id="idreceiptno">
 </form>
 
 <div id="deleteBookingForm">
@@ -264,21 +264,21 @@ include 'includes/navbarAdmin.php';
 
 <form id="editTripForm" >
     <label for="idtripno2">Trip ID (Ref):</label>
-    <input type="text" name="tripid" id="idtripno2">
+    <input required type="text" name="tripid" id="idtripno2">
     <label for="idstartlocation">Start Location:</label>
-    <input type="text" name="startloc" id="idstartlocation">
+    <input required type="text" name="startloc" id="idstartlocation">
     <label for="idendlocation">End Location:</label>
-    <input type="text" name="endloc" id="idendlocation">
+    <input required type="text" name="endloc" id="idendlocation">
     <label for="idcost">Riding Cost:</label>
-    <input type="text" name="ridingcost" id="idcost">
+    <input required type="text" name="ridingcost" id="idcost">
     <label for="idseatsavail">Seats Available:</label>
-    <input type="text" name="seatsavail" id="idseatsavail">
+    <input required type="text" name="seatsavail" id="idseatsavail">
     <label for="idtripdate">Trip Date:</label>
-    <input type="text" name="tripdate" id="idtripdate" class="datepicker">
+    <input required type="text" name="tripdate" id="idtripdate" class="datepicker">
     <label for="idtriptime">Trip Time:</label>
-    <input type="text" name="tripdate" id="idtriptime">
+    <input required type="text" name="tripdate" id="idtriptime">
     <label for="idplateno1">Plate No:</label>
-    <input type="text" name="plateno" id="idplateno1">
+    <input required type="text" name="plateno" id="idplateno1">
 </form>
 
 <div id="deleteTripForm">

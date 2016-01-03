@@ -56,8 +56,8 @@ include 'includes/navbar.php';
     <div class="large-3 large-offset-8 columns primary-background-translucent">
         <div class="large-12"><br></div>
         <form method="post" action="login.php">
-            <input type="text" name="username" placeholder="Username" />
-            <input type="password" name="password" placeholder="Password" />
+            <input required type="text" name="username" placeholder="Username" />
+            <input required type="password" name="password" placeholder="Password" />
             <input type="submit" name="login" class="large-12 tiny button" value="LOGIN" />
             <br>
             <small><a href="#" class="right">Forget username/password?</a></small>
